@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         b.setOnClickListener {// с помощью второстепенного потока получаем продукт и отображаем в тв
             CoroutineScope(Dispatchers.IO).launch {
                 val product =
-                    productApi.getProductById() // при запуске правой части запустится интерфейс, возьмет один продукт и запишет его в пер. продукт
+                    productApi.getProductById(3) // при запуске правой части запустится интерфейс, возьмет один продукт и запишет его в пер. продукт
                 runOnUiThread { // получение доступа к текст вью делается через основной поток, этот код помогает это сделать
                     // обновление текст вью
                     tv.text = product.title
